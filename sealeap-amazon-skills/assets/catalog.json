@@ -3200,10 +3200,49 @@
       "edition_added": "2026-09-27-mercadolibre"
     },
     {
+      "name": "sealeap-ozon-data-audit",
+      "platform": "ozon",
+      "mode": "operations",
+      "title": "OZON 多数据源验收",
+      "path": "ozon/sealeap-ozon-data-audit",
+      "sources": [
+        "O06",
+        "O08"
+      ],
+      "rule_checks": [
+        "R77",
+        "R78",
+        "R79",
+        "R80",
+        "R81",
+        "R82",
+        "R83",
+        "R90"
+      ],
+      "merged_topics": [
+        "验收 Ozon Seller、前台、自家数据、CSV/XLSX 和可选 MPstats 数据，统一来源、时间、币种与字段口径"
+      ],
+      "scope": "specialist",
+      "edition_added": "2026-10-04-ozon-phase1",
+      "mpstats_required": false,
+      "mpstats_reports": [
+        "Ozon → Поиск по SKU；API full / by_period；或已授权 MCP 的 OZON 只读工具"
+      ],
+      "data_contract": "ozon-evidence/1.0",
+      "data_sources": [
+        "ozon_seller",
+        "ozon_storefront",
+        "own_data",
+        "manual",
+        "mpstats"
+      ],
+      "edition_updated": "2026-10-04-ozon-phase1"
+    },
+    {
       "name": "sealeap-ozon-mpstats-data-audit",
       "platform": "ozon",
       "mode": "operations",
-      "title": "OZON MPstats 接入与数据验收",
+      "title": "OZON 数据审计（旧名兼容）",
       "path": "ozon/sealeap-ozon-mpstats-data-audit",
       "sources": [
         "O06",
@@ -3220,14 +3259,24 @@
         "R90"
       ],
       "merged_topics": [
-        "连接 MPstats、验收 OZON 导出、排查数据不一致或为经营分析准备可追溯数据"
+        "验收 Ozon Seller、前台、自家数据、CSV/XLSX 和可选 MPstats 数据，统一来源、时间、币种与字段口径"
       ],
       "scope": "specialist",
       "edition_added": "2026-09-27-ozon-mpstats",
-      "mpstats_required": true,
+      "mpstats_required": false,
       "mpstats_reports": [
         "Ozon → Поиск по SKU；API full / by_period；或已授权 MCP 的 OZON 只读工具"
-      ]
+      ],
+      "data_contract": "ozon-evidence/1.0",
+      "data_sources": [
+        "ozon_seller",
+        "ozon_storefront",
+        "own_data",
+        "manual",
+        "mpstats"
+      ],
+      "edition_updated": "2026-10-04-ozon-phase1",
+      "alias_of": "sealeap-ozon-data-audit"
     },
     {
       "name": "sealeap-ozon-niche-screening",
@@ -3245,14 +3294,23 @@
         "R80"
       ],
       "merged_topics": [
-        "筛选 OZON 类目、评估某个细分市场是否值得小额测试"
+        "筛选 Ozon 细分类目，结合可比公开样本、自家成本与履约约束决定是否进行有上限试销"
       ],
       "scope": "specialist",
       "edition_added": "2026-09-27-ozon-mpstats",
-      "mpstats_required": true,
+      "mpstats_required": false,
       "mpstats_reports": [
         "Ozon → Выбор ниши → Товары / Продавцы / По дням"
-      ]
+      ],
+      "data_contract": "ozon-evidence/1.0",
+      "data_sources": [
+        "ozon_seller",
+        "ozon_storefront",
+        "own_data",
+        "manual",
+        "mpstats"
+      ],
+      "edition_updated": "2026-10-04-ozon-phase1"
     },
     {
       "name": "sealeap-ozon-competitor-map",
@@ -3270,14 +3328,23 @@
         "R81"
       ],
       "merged_topics": [
-        "建立 OZON 竞品池，判断卖家集中程度和可突破的位置"
+        "建立 Ozon 可比竞品池，比较规格、卖家、价格和物流，区分样本描述与销量集中度"
       ],
       "scope": "specialist",
       "edition_added": "2026-09-27-ozon-mpstats",
-      "mpstats_required": true,
+      "mpstats_required": false,
       "mpstats_reports": [
         "目标 niche → Продавцы / Бренды / Товары；SKU → Похожие товары"
-      ]
+      ],
+      "data_contract": "ozon-evidence/1.0",
+      "data_sources": [
+        "ozon_seller",
+        "ozon_storefront",
+        "own_data",
+        "manual",
+        "mpstats"
+      ],
+      "edition_updated": "2026-10-04-ozon-phase1"
     },
     {
       "name": "sealeap-ozon-seasonality-entry",
@@ -3319,14 +3386,23 @@
         "R81"
       ],
       "merged_topics": [
-        "寻找 OZON 可进入价格带，避免拿不同规格商品直接比价"
+        "按 Ozon 同规格、套装和价格类型比较价格带，结合完整成本底线提出试价范围"
       ],
       "scope": "specialist",
       "edition_added": "2026-09-27-ozon-mpstats",
-      "mpstats_required": true,
+      "mpstats_required": false,
       "mpstats_reports": [
         "niche → Цены；Товары；SKU → 数据按日"
-      ]
+      ],
+      "data_contract": "ozon-evidence/1.0",
+      "data_sources": [
+        "ozon_seller",
+        "ozon_storefront",
+        "own_data",
+        "manual",
+        "mpstats"
+      ],
+      "edition_updated": "2026-10-04-ozon-phase1"
     },
     {
       "name": "sealeap-ozon-newcomer-cohort",
@@ -3422,14 +3498,23 @@
         "R85"
       ],
       "merged_topics": [
-        "结合 MPstats 价格带与自家成本测算 OZON 单品贡献、保本价和广告上限"
+        "用自家报价、当前账户费用和物流计算 Ozon 跨境毛利、贡献与保本价，MPstats 只作可选价格参照"
       ],
       "scope": "specialist",
       "edition_added": "2026-09-27-ozon-mpstats",
-      "mpstats_required": true,
+      "mpstats_required": false,
       "mpstats_reports": [
         "外部 Цены / SKU 价格；内部 Кабинет Ozon → Товары 成本与扣费"
-      ]
+      ],
+      "data_contract": "ozon-evidence/1.0",
+      "data_sources": [
+        "ozon_seller",
+        "ozon_storefront",
+        "own_data",
+        "manual",
+        "mpstats"
+      ],
+      "edition_updated": "2026-10-04-ozon-phase1"
     },
     {
       "name": "sealeap-ozon-fulfillment-choice",
@@ -3447,14 +3532,23 @@
         "R83"
       ],
       "merged_topics": [
-        "依据 MPstats 需求和库存表现比较 OZON 可用履约模式"
+        "优先评审中国至俄罗斯 rFBS 路线，按账户资格、实测重量体积、报价、时效和逆物流验证可行性"
       ],
       "scope": "specialist",
       "edition_added": "2026-09-27-ozon-mpstats",
-      "mpstats_required": true,
+      "mpstats_required": false,
       "mpstats_reports": [
         "可比 SKU → delivery_scheme / 仓库；内部商品库存及体积重量"
-      ]
+      ],
+      "data_contract": "ozon-evidence/1.0",
+      "data_sources": [
+        "ozon_seller",
+        "ozon_storefront",
+        "own_data",
+        "manual",
+        "mpstats"
+      ],
+      "edition_updated": "2026-10-04-ozon-phase1"
     },
     {
       "name": "sealeap-ozon-keyword-map",

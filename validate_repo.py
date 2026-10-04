@@ -22,6 +22,8 @@ except json.JSONDecodeError:
     collection_result = {"ok": False, "errors": ["Collection validator did not return JSON"]}
 require(result.returncode == 0, "Collection validation failed")
 errors.extend(collection_result.get("errors", []))
+portable = subprocess.run([sys.executable, str(ROOT / "sync_ozon_phase1.py"), "--check"], capture_output=True, text=True)
+require(portable.returncode == 0, "Phase1 portable resources differ: " + portable.stdout)
 catalog = json.loads((COLLECTION/"assets/catalog.json").read_text())
 entries = catalog["skills"]
 names = {x["name"] for x in entries}
@@ -51,7 +53,7 @@ allowed_hosts = {"github.com", "img.shields.io", "sealeap.cn", "help.shopify.com
     "www.etsy.com", "help.etsy.com", "www.ebay.com", "pages.ebay.com", "export.ebay.com",
     "ads.tiktok.com", "seller-us.tiktok.com", "www.walmartconnect.com",
     "marketplacelearn.walmart.com", "support.google.com", "help.klaviyo.com",
-    "global-selling.mercadolibre.com", "sellers.mercadolibre.com", "mpstats.io", "wiki.mpstats.io", "global-help.ozon.com", "sell.wayfair.com", "www.aboutwayfair.com", "developer.wayfair.io"}
+    "global-selling.mercadolibre.com", "sellers.mercadolibre.com", "mpstats.io", "wiki.mpstats.io", "global-help.ozon.com", "docs.ozon.ru", "sell.wayfair.com", "www.aboutwayfair.com", "developer.wayfair.io"}
 allowed_github = ("https://github.com/xjli360/sealeap-ecommerce-skills",
     "https://github.com/xjli360/sealeap-amazon-skills",
     "https://github.com/xjli360/awesome-design-md-ecommerce",

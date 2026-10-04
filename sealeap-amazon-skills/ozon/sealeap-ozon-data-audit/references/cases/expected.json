@@ -1,0 +1,39 @@
+{
+  "as_of": "2026-10-04",
+  "cases": [
+    {
+      "id": "01-bounded-trial",
+      "audit": "VALID_SYNTHETIC",
+      "decision": "GO",
+      "base_contribution": 440,
+      "stress_contribution": 235,
+      "billable_kg": 0.4
+    },
+    {
+      "id": "02-negative-margin",
+      "audit": "VALID_SYNTHETIC",
+      "decision": "NO-GO",
+      "base_contribution": -120,
+      "stress_contribution": -269,
+      "billable_kg": 0.4
+    },
+    {
+      "id": "03-local-hit-crossborder-fail",
+      "audit": "VALID_SYNTHETIC",
+      "decision": "NO-GO",
+      "base_contribution": 1360,
+      "stress_contribution": 838,
+      "billable_kg": 32
+    },
+    {
+      "id": "04-missing-costs",
+      "audit": "HOLD",
+      "decision": "HOLD"
+    },
+    {
+      "id": "05-conflicting-sources",
+      "audit": "HOLD",
+      "decision": "HOLD"
+    }
+  ]
+}

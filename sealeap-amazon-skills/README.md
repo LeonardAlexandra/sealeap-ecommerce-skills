@@ -1,6 +1,6 @@
 # SeaLeap 八平台技能目录
 
-194个可独立复制的Skill；综合入口用于多环节评审，专项入口用于明确任务。
+195个可独立复制的Skill；综合入口用于多环节评审，专项入口用于明确任务。
 
 ## shopify · 27 Skills
 
@@ -178,22 +178,23 @@
 
 每个目录保留MIT许可与全部本地参考。[美客多新增](RESEARCH-MERCADOLIBRE-20260927.md) · [此前补充](RESEARCH-EXTRA-20260924.md) · [研究边界](RESEARCH.md) · [验证](VALIDATION.md)。
 
-## ozon · 26 Skills · MPstats 必需
+## ozon · 27入口 · 第一阶段6项能力支持多源
 
-每包自带MPstats接入约定；先用数据验收入口，再按任务选择。
+先使用通用数据审计；第一阶段7个入口（含旧名兼容）将MPstats改为可选，其余20个尚未迁移。见 [第一阶段说明](OZON-PHASE1.md)。
 
 | Skill | 方向 | 定位 |
 | --- | --- | --- |
-| [OZON MPstats 接入与数据验收](ozon/sealeap-ozon-mpstats-data-audit/SKILL.md) | 运营 | MPstats专项 |
-| [OZON 细分市场筛选与进入评审](ozon/sealeap-ozon-niche-screening/SKILL.md) | 选品 | MPstats专项 |
-| [OZON 竞争格局与可比商品池](ozon/sealeap-ozon-competitor-map/SKILL.md) | 选品 | MPstats专项 |
+| [OZON 通用多数据源验收](ozon/sealeap-ozon-data-audit/SKILL.md) | 运营 | 多源/MPstats可选 |
+| [OZON 数据审计（旧名兼容）](ozon/sealeap-ozon-mpstats-data-audit/SKILL.md) | 运营 | 多源/MPstats可选 |
+| [OZON 细分市场筛选与进入评审](ozon/sealeap-ozon-niche-screening/SKILL.md) | 选品 | 多源/MPstats可选 |
+| [OZON 竞争格局与可比商品池](ozon/sealeap-ozon-competitor-map/SKILL.md) | 选品 | 多源/MPstats可选 |
 | [OZON 季节窗口与上新倒排](ozon/sealeap-ozon-seasonality-entry/SKILL.md) | 选品 | MPstats专项 |
-| [OZON 价格带与规格机会](ozon/sealeap-ozon-price-segment/SKILL.md) | 选品 | MPstats专项 |
+| [OZON 价格带与规格机会](ozon/sealeap-ozon-price-segment/SKILL.md) | 选品 | 多源/MPstats可选 |
 | [OZON 新品进入与存活率观察](ozon/sealeap-ozon-newcomer-cohort/SKILL.md) | 选品 | MPstats专项 |
 | [OZON 评论痛点与产品改进定义](ozon/sealeap-ozon-review-opportunity/SKILL.md) | 选品 | MPstats专项 |
 | [OZON 相邻拓品与商品组合](ozon/sealeap-ozon-assortment-extension/SKILL.md) | 选品 | MPstats专项 |
-| [OZON 单位经济与广告承受力](ozon/sealeap-ozon-unit-economics/SKILL.md) | 选品 | MPstats专项 |
-| [OZON 履约模式与跨境可行性](ozon/sealeap-ozon-fulfillment-choice/SKILL.md) | 运营 | MPstats专项 |
+| [OZON 单位经济与广告承受力](ozon/sealeap-ozon-unit-economics/SKILL.md) | 选品 | 多源/MPstats可选 |
+| [OZON 履约模式与跨境可行性](ozon/sealeap-ozon-fulfillment-choice/SKILL.md) | 运营 | 多源/MPstats可选 |
 | [OZON 俄语关键词与意图映射](ozon/sealeap-ozon-keyword-map/SKILL.md) | 运营 | MPstats专项 |
 | [OZON 俄语 Listing 与属性校验](ozon/sealeap-ozon-listing-localization/SKILL.md) | 运营 | MPstats专项 |
 | [OZON 主图与富内容改进简报](ozon/sealeap-ozon-visual-brief/SKILL.md) | 运营 | MPstats专项 |

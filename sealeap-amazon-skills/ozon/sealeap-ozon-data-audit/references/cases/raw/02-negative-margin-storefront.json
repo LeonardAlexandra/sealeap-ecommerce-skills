@@ -1,0 +1,30 @@
+{
+  "synthetic": true,
+  "notice": "Reproducible test data; not a live export, actual tariff, permission or sales result.",
+  "records": {
+    "competitor-1": {
+      "price_discount": 1000,
+      "price_card": 900,
+      "pack_quantity": 2,
+      "review_count": 100,
+      "rating": 4.6,
+      "delivery_days": 2
+    },
+    "competitor-2": {
+      "price_discount": 600,
+      "price_card": 500,
+      "pack_quantity": 1,
+      "review_count": 200,
+      "rating": 4.6,
+      "delivery_days": 2
+    },
+    "competitor-3": {
+      "price_discount": 1400,
+      "price_card": 1300,
+      "pack_quantity": 2,
+      "review_count": 300,
+      "rating": 4.6,
+      "delivery_days": 2
+    }
+  }
+}

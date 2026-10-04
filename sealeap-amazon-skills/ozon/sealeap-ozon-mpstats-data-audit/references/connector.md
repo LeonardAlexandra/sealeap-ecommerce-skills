@@ -1,3 +1,5 @@
+> 第一阶段新增通用合同与 scripts/audit.py（依赖 requirements.txt）；下述两个旧工具保持原 MPstats 外部日序列语义，不能与新 JSON 格式混用。
+
 # 接入和验收工具
 
 本包不要求某个私有本地 Skill，也不自动安装软件。Python 3.10+ 即可运行；官方 MCP / API 需当前账户权限，手工导出同样可用。MPstats 服务订阅或 API 权限不包含在本仓库 MIT 许可中。

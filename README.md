@@ -6,7 +6,7 @@
   <p>
     <a href="https://sealeap.cn/"><img src="https://img.shields.io/badge/Website-sealeap.cn-0ea5e9?style=for-the-badge" alt="SeaLeap 官网" /></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge" alt="MIT License" /></a>
-    <img src="https://img.shields.io/badge/Skills-194-00a8e1?style=for-the-badge" alt="194 Skills" />
+    <img src="https://img.shields.io/badge/Skills-195-00a8e1?style=for-the-badge" alt="195 Skills" />
     <img src="https://img.shields.io/badge/Platforms-8-8b5cf6?style=for-the-badge" alt="8 Platforms" />
     <img src="https://img.shields.io/badge/Free-100%25-22c55e?style=for-the-badge" alt="完全免费" />
     <a href="https://github.com/xjli360/sealeap-ecommerce-skills/stargazers"><img src="https://img.shields.io/github/stars/xjli360/sealeap-ecommerce-skills?style=for-the-badge&logo=github" alt="GitHub stars" /></a>
@@ -32,7 +32,7 @@
 
 ## 技能目录
 
-截至 **2026-09-29**，共有 **194 个 Skills**：15 个综合评审入口 + 179 个专项任务，八个平台均超过20个。全部使用独立的 `SKILL.md` 架构，并附带参考文件、调用元数据和 MIT 许可。
+截至 **2026-10-04**，共有 **195 个 Skills**：15 个综合评审入口 + 180 个专项入口（含1个旧名兼容入口），八个平台均超过20个。全部使用独立的 `SKILL.md` 架构，并附带参考文件、调用元数据和 MIT 许可。
 
 | 平台 | 数量 | 主要方向 | 目录 |
 | --- | ---: | --- | --- |
@@ -42,13 +42,13 @@
 | TikTok Shop | 22 | 趋势与演示、全成本、达人、佣金、寄样、素材权利、短视频、直播、爆量库存、履约、GMV Max | [TikTok Shop](sealeap-amazon-skills/tiktokshop/) |
 | Walmart | 24 | 搜索需求、商品组合、WFS、价格底线、目录身份、质量、查询份额、Buy Box、库存、绩效、广告位 | [Walmart](sealeap-amazon-skills/walmart/) |
 | Mercado Libre / 美客多 | 25 | 国家与模式、需求与季节、目录、Full、信誉、回款、Clips、目标ROAS与曝光损失 | [Mercado Libre](sealeap-amazon-skills/mercadolibre/) |
-| OZON | 26 | MPstats 数据验收、细分/价带/新品、俄语关键词、仓配、账单、CPC/PPO、预算与归因 | [OZON](sealeap-amazon-skills/ozon/) |
+| OZON | 27 | 多源数据验收、细分/价带/新品、俄语关键词、仓配、账单、CPC/PPO、预算与归因 | [OZON](sealeap-amazon-skills/ozon/) |
 | Wayfair | 24 | 供货价与扣款、家居规格/图片、组件多箱、CastleGate、售后、Sponsored Products/Shops、广告贡献 | [Wayfair](sealeap-amazon-skills/wayfair/) |
-| **合计** | **194** | **选品、运营与广告的具体任务** | [完整索引](sealeap-amazon-skills/README.md) |
+| **合计** | **195** | **选品、运营与广告的具体任务** | [完整索引](sealeap-amazon-skills/README.md) |
 
 此前新增25个美客多专项Skill，覆盖6个选品、13个运营和6个广告任务；附同币种贡献与现金情景的离线测算工具。见[美客多增量与来源边界](sealeap-amazon-skills/RESEARCH-MERCADOLIBRE-20260927.md)。此前补充见[五平台增量](sealeap-amazon-skills/RESEARCH-EXTRA-20260924.md)。
 
-已收录 **26 个 OZON Skills**：选品8、运营12、广告6，全部以 **MPstats 数据为必需输入**。支持已配置的官方 MCP、API 或可核验导出，内部财务数据要求已授权店铺。缺数据先 HOLD；外部估算不冒充自家真实销量、利润或广告效果。附只读 API 探针和离线数据验收工具，详见 [OZON 研究与接入边界](sealeap-amazon-skills/RESEARCH-OZON-20260927.md)。
+OZON 第一阶段已完成多源数据审计、细分筛选、竞品池、价格带、单位经济、履约评审这 **6 项能力**；新增通用审计名称，保留旧名称兼容入口，因此现有27个Ozon入口。上述7个入口中 MPstats 为可选增强；其余20个 Skill 尚未迁移，继续保留原有前置条件。详见 [第一阶段改造、Schema 与回归结果](sealeap-amazon-skills/OZON-PHASE1.md)。
 
 TikTok Shop的22个Skill现补充[单位经济与佣金上限计算器](sealeap-amazon-skills/tiktokshop/sealeap-tiktokshop-unit-economics/references/calculator.md)：按标准联盟、Shop Ads及非联盟订单分组，计算贡献、条件佣金上限和广告预算，计入寄样、报酬、制作与退款成本；仅用Python标准库，附可运行的合成样例。
 
@@ -94,7 +94,7 @@ cd sealeap-ecommerce-skills
 请给出SKU贡献、可承受CAC、数据缺口和有限测试建议。
 ```
 
-只有一个具体问题时使用专项入口；需要完整选品评审、多环节巡检或广告联合诊断时，选择对应的综合入口。单个 Skill 可独立复制，不要求加载全部 194 个，也不依赖私人审计目录。OZON模块必须提供MPstats数据，服务订阅和权限按MPstats要求自行准备。
+只有一个具体问题时使用专项入口；需要完整选品评审、多环节巡检或广告联合诊断时，选择对应的综合入口。单个 Skill 可独立复制，不要求加载全部 195 个，也不依赖私人审计目录。OZON第一阶段入口无需MPstats；其余入口按各自声明准备数据。第三方服务权限不含在开源许可中。
 
 ## 来源与质量
 
@@ -117,7 +117,7 @@ cd sealeap-ecommerce-skills
 
 本项目的原创 Skills、代码与文档采用 **[MIT License](LICENSE)**，可免费使用、修改、分享和用于商业项目。上游版权与许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
-开源许可不转移第三方原始文章、课程、音视频、商标或客户数据的权利。外部数据服务费用由服务方决定，OZON模块要求MPstats数据；使用本仓库本身不收费。
+开源许可不转移第三方原始文章、课程、音视频、商标或客户数据的权利。外部数据服务费用由服务方决定，OZON未迁移入口仍要求MPstats数据；使用本仓库本身不收费。
 
 本项目由 SeaLeap 独立维护，不代表 Shopify、Etsy、eBay、TikTok、Walmart、Mercado Libre、OZON、Wayfair 或 MPstats 官方认证或背书。
 
@@ -134,7 +134,7 @@ sealeap-ecommerce-skills/
 │   ├── tiktokshop/         # 22 Skills
 │   ├── walmart/            # 24 Skills
 │   ├── mercadolibre/       # 25 Skills
-│   ├── ozon/               # 26 Skills，全部要求 MPstats
+│   ├── ozon/               # 27入口；阶段一6项能力已多源化，含旧名兼容入口
 │   ├── wayfair/            # 24 Skills，含供货贡献与多箱校验工具
 │   └── validate_collection.py
 ├── README.md

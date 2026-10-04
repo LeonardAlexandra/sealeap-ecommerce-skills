@@ -1,0 +1,429 @@
+{
+  "as_of": "2026-10-04",
+  "synthetic": true,
+  "boundary": "Deterministic reference checks and arithmetic; not an independent LLM or live seller trial.",
+  "passed": true,
+  "cases": [
+    {
+      "id": "01-bounded-trial",
+      "input_sha256": "bd52a59d0ab2b1473c8645e0d3f5624771fefa141be3233f14fa550a34724476",
+      "audit": "VALID_SYNTHETIC",
+      "decision": "GO",
+      "source_file_errors": [],
+      "market": {
+        "price_basis": "observed discounted price per unit; not seller revenue",
+        "groups": {
+          "organizer-small": {
+            "sample_n": 3,
+            "median_rub_per_unit": 600.0,
+            "min": 500.0,
+            "max": 700.0
+          }
+        },
+        "seller_listing_counts": {
+          "seller-a": 2,
+          "seller-b": 1
+        },
+        "excluded": [],
+        "market_size": {
+          "value": null,
+          "kind": "UNKNOWN"
+        },
+        "sales_cr5": {
+          "value": null,
+          "kind": "UNKNOWN"
+        },
+        "sales_weighted_price": {
+          "value": null,
+          "kind": "UNKNOWN"
+        },
+        "limitations": [
+          "Listing counts and reviews are not sales or market share."
+        ]
+      },
+      "economic_records": [
+        {
+          "record_id": "candidate",
+          "scenario_signal": "GO",
+          "missing_fields": [],
+          "decision": "GO",
+          "reasons": [],
+          "base": {
+            "scenario_signal": "GO",
+            "reason": "positive_contribution",
+            "metrics": {
+              "seller_price_rub": 1500.0,
+              "goods_cost_rub": 300.0,
+              "fixed_cost_rub": 610.0,
+              "modeled_spend_rub": 1060.0,
+              "merchandise_gross_profit_rub": 1200.0,
+              "contribution_before_ads_rub": 590.0,
+              "contribution_after_ads_rub": 440.0,
+              "contribution_margin": 0.29,
+              "break_even_price_rub": 871.43,
+              "break_even_ad_rate": 0.39
+            }
+          },
+          "stress": {
+            "scenario_signal": "GO",
+            "reason": "positive_contribution",
+            "metrics": {
+              "seller_price_rub": 1350.0,
+              "goods_cost_rub": 330.0,
+              "fixed_cost_rub": 710.0,
+              "modeled_spend_rub": 1115.0,
+              "merchandise_gross_profit_rub": 1020.0,
+              "contribution_before_ads_rub": 370.0,
+              "contribution_after_ads_rub": 235.0,
+              "contribution_margin": 0.17,
+              "break_even_price_rub": 1014.29,
+              "break_even_ad_rate": 0.27
+            }
+          },
+          "route": {
+            "volumetric_kg": 0.4,
+            "billable_kg": 0.4
+          },
+          "stress_assumptions": {
+            "price_factor": "0.90",
+            "fx_factor": "1.10",
+            "shipping_factor": "1.20",
+            "return_factor": "1.50"
+          },
+          "metric_kind": "ESTIMATE",
+          "input_refs": [
+            "candidate:seller_price",
+            "candidate:revenue_basis",
+            "candidate:procurement",
+            "candidate:domestic_shipping",
+            "candidate:packaging",
+            "candidate:fx_rub_per_cny",
+            "candidate:outbound_shipping",
+            "candidate:return_loss",
+            "candidate:other_fixed",
+            "candidate:commission_rate",
+            "candidate:payment_rate",
+            "candidate:tax_rate",
+            "candidate:ad_rate"
+          ],
+          "formula": "(price*(1-commission-payment-tax-ad)) - ((procurement+domestic+packaging)*fx+outbound+return_loss+other_fixed)"
+        }
+      ],
+      "missing_fields": {
+        "candidate": [],
+        "competitor-1": [],
+        "competitor-2": [],
+        "competitor-3": []
+      },
+      "conflicts": [],
+      "passed": true
+    },
+    {
+      "id": "02-negative-margin",
+      "input_sha256": "d94ec9036defaa996e1f63c29b76de1fe8bc426da9db943351861d001fd4680a",
+      "audit": "VALID_SYNTHETIC",
+      "decision": "NO-GO",
+      "source_file_errors": [],
+      "market": {
+        "price_basis": "observed discounted price per unit; not seller revenue",
+        "groups": {
+          "organizer-small": {
+            "sample_n": 3,
+            "median_rub_per_unit": 600.0,
+            "min": 500.0,
+            "max": 700.0
+          }
+        },
+        "seller_listing_counts": {
+          "seller-a": 2,
+          "seller-b": 1
+        },
+        "excluded": [],
+        "market_size": {
+          "value": null,
+          "kind": "UNKNOWN"
+        },
+        "sales_cr5": {
+          "value": null,
+          "kind": "UNKNOWN"
+        },
+        "sales_weighted_price": {
+          "value": null,
+          "kind": "UNKNOWN"
+        },
+        "limitations": [
+          "Listing counts and reviews are not sales or market share."
+        ]
+      },
+      "economic_records": [
+        {
+          "record_id": "candidate",
+          "scenario_signal": "NO-GO",
+          "missing_fields": [],
+          "decision": "NO-GO",
+          "reasons": [],
+          "base": {
+            "scenario_signal": "NO-GO",
+            "reason": "nonpositive_contribution",
+            "metrics": {
+              "seller_price_rub": 700.0,
+              "goods_cost_rub": 300.0,
+              "fixed_cost_rub": 610.0,
+              "modeled_spend_rub": 820.0,
+              "merchandise_gross_profit_rub": 400.0,
+              "contribution_before_ads_rub": -50.0,
+              "contribution_after_ads_rub": -120.0,
+              "contribution_margin": -0.17,
+              "break_even_price_rub": 871.43,
+              "break_even_ad_rate": -0.07
+            }
+          },
+          "stress": {
+            "scenario_signal": "NO-GO",
+            "reason": "nonpositive_contribution",
+            "metrics": {
+              "seller_price_rub": 630.0,
+              "goods_cost_rub": 330.0,
+              "fixed_cost_rub": 710.0,
+              "modeled_spend_rub": 899.0,
+              "merchandise_gross_profit_rub": 300.0,
+              "contribution_before_ads_rub": -206.0,
+              "contribution_after_ads_rub": -269.0,
+              "contribution_margin": -0.43,
+              "break_even_price_rub": 1014.29,
+              "break_even_ad_rate": -0.33
+            }
+          },
+          "route": {
+            "volumetric_kg": 0.4,
+            "billable_kg": 0.4
+          },
+          "stress_assumptions": {
+            "price_factor": "0.90",
+            "fx_factor": "1.10",
+            "shipping_factor": "1.20",
+            "return_factor": "1.50"
+          },
+          "metric_kind": "ESTIMATE",
+          "input_refs": [
+            "candidate:seller_price",
+            "candidate:revenue_basis",
+            "candidate:procurement",
+            "candidate:domestic_shipping",
+            "candidate:packaging",
+            "candidate:fx_rub_per_cny",
+            "candidate:outbound_shipping",
+            "candidate:return_loss",
+            "candidate:other_fixed",
+            "candidate:commission_rate",
+            "candidate:payment_rate",
+            "candidate:tax_rate",
+            "candidate:ad_rate"
+          ],
+          "formula": "(price*(1-commission-payment-tax-ad)) - ((procurement+domestic+packaging)*fx+outbound+return_loss+other_fixed)"
+        }
+      ],
+      "missing_fields": {
+        "candidate": [],
+        "competitor-1": [],
+        "competitor-2": [],
+        "competitor-3": []
+      },
+      "conflicts": [],
+      "passed": true
+    },
+    {
+      "id": "03-local-hit-crossborder-fail",
+      "input_sha256": "f2d282989f0bbc0453bd98090705aa765f4ba3e0e5845519768db71831b02bc0",
+      "audit": "VALID_SYNTHETIC",
+      "decision": "NO-GO",
+      "source_file_errors": [],
+      "market": {
+        "price_basis": "observed discounted price per unit; not seller revenue",
+        "groups": {
+          "organizer-bulky": {
+            "sample_n": 3,
+            "median_rub_per_unit": 600.0,
+            "min": 500.0,
+            "max": 700.0
+          }
+        },
+        "seller_listing_counts": {
+          "seller-a": 2,
+          "seller-b": 1
+        },
+        "excluded": [],
+        "market_size": {
+          "value": null,
+          "kind": "UNKNOWN"
+        },
+        "sales_cr5": {
+          "value": null,
+          "kind": "UNKNOWN"
+        },
+        "sales_weighted_price": {
+          "value": null,
+          "kind": "UNKNOWN"
+        },
+        "limitations": [
+          "Listing counts and reviews are not sales or market share."
+        ]
+      },
+      "economic_records": [
+        {
+          "record_id": "candidate",
+          "scenario_signal": "GO",
+          "missing_fields": [],
+          "decision": "NO-GO",
+          "reasons": [
+            "route_weight_limit"
+          ],
+          "base": {
+            "scenario_signal": "GO",
+            "reason": "positive_contribution",
+            "metrics": {
+              "seller_price_rub": 4000.0,
+              "goods_cost_rub": 720.0,
+              "fixed_cost_rub": 1440.0,
+              "modeled_spend_rub": 2640.0,
+              "merchandise_gross_profit_rub": 3280.0,
+              "contribution_before_ads_rub": 1760.0,
+              "contribution_after_ads_rub": 1360.0,
+              "contribution_margin": 0.34,
+              "break_even_price_rub": 2057.14,
+              "break_even_ad_rate": 0.44
+            }
+          },
+          "stress": {
+            "scenario_signal": "GO",
+            "reason": "positive_contribution",
+            "metrics": {
+              "seller_price_rub": 3600.0,
+              "goods_cost_rub": 792.0,
+              "fixed_cost_rub": 1682.0,
+              "modeled_spend_rub": 2762.0,
+              "merchandise_gross_profit_rub": 2808.0,
+              "contribution_before_ads_rub": 1198.0,
+              "contribution_after_ads_rub": 838.0,
+              "contribution_margin": 0.23,
+              "break_even_price_rub": 2402.86,
+              "break_even_ad_rate": 0.33
+            }
+          },
+          "route": {
+            "volumetric_kg": 32.0,
+            "billable_kg": 32.0
+          },
+          "stress_assumptions": {
+            "price_factor": "0.90",
+            "fx_factor": "1.10",
+            "shipping_factor": "1.20",
+            "return_factor": "1.50"
+          },
+          "metric_kind": "ESTIMATE",
+          "input_refs": [
+            "candidate:seller_price",
+            "candidate:revenue_basis",
+            "candidate:procurement",
+            "candidate:domestic_shipping",
+            "candidate:packaging",
+            "candidate:fx_rub_per_cny",
+            "candidate:outbound_shipping",
+            "candidate:return_loss",
+            "candidate:other_fixed",
+            "candidate:commission_rate",
+            "candidate:payment_rate",
+            "candidate:tax_rate",
+            "candidate:ad_rate"
+          ],
+          "formula": "(price*(1-commission-payment-tax-ad)) - ((procurement+domestic+packaging)*fx+outbound+return_loss+other_fixed)"
+        }
+      ],
+      "missing_fields": {
+        "candidate": [],
+        "competitor-1": [],
+        "competitor-2": [],
+        "competitor-3": []
+      },
+      "conflicts": [],
+      "passed": true
+    },
+    {
+      "id": "04-missing-costs",
+      "input_sha256": "de068e30708dd74c16b7149a0b599c0030e26ae31c6daeb58b7d09450ba34c4d",
+      "audit": "HOLD",
+      "decision": "HOLD",
+      "source_file_errors": [],
+      "market": {
+        "price_basis": "observed discounted price per unit; not seller revenue",
+        "groups": {
+          "organizer-small": {
+            "sample_n": 3,
+            "median_rub_per_unit": 600.0,
+            "min": 500.0,
+            "max": 700.0
+          }
+        },
+        "seller_listing_counts": {
+          "seller-a": 2,
+          "seller-b": 1
+        },
+        "excluded": [],
+        "market_size": {
+          "value": null,
+          "kind": "UNKNOWN"
+        },
+        "sales_cr5": {
+          "value": null,
+          "kind": "UNKNOWN"
+        },
+        "sales_weighted_price": {
+          "value": null,
+          "kind": "UNKNOWN"
+        },
+        "limitations": [
+          "Listing counts and reviews are not sales or market share."
+        ]
+      },
+      "economic_records": [],
+      "missing_fields": {
+        "candidate": [
+          "outbound_shipping",
+          "return_loss"
+        ],
+        "competitor-1": [],
+        "competitor-2": [],
+        "competitor-3": []
+      },
+      "conflicts": [],
+      "passed": true
+    },
+    {
+      "id": "05-conflicting-sources",
+      "input_sha256": "9916d315d208fbeaf062ea1dd9399fb9bf1e6d791d859868318af0dc23fc3819",
+      "audit": "HOLD",
+      "decision": "HOLD",
+      "source_file_errors": [],
+      "market": null,
+      "economic_records": [],
+      "missing_fields": {
+        "candidate": [],
+        "competitor-1": [],
+        "competitor-2": [],
+        "competitor-3": []
+      },
+      "conflicts": [
+        {
+          "record_id": "candidate",
+          "field": "fx_rub_per_cny",
+          "source_ids": [
+            "own-route",
+            "alternative"
+          ],
+          "resolution": null
+        }
+      ],
+      "passed": true
+    }
+  ]
+}

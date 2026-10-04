@@ -1,0 +1,28 @@
+{
+  "synthetic": true,
+  "notice": "Reproducible test data; not a live export, actual tariff, permission or sales result.",
+  "records": {
+    "candidate": {
+      "seller_price": 4000,
+      "fx_rub_per_cny": 12,
+      "outbound_shipping": 600,
+      "return_loss": 100,
+      "other_fixed": 20,
+      "ad_rate": 0.1,
+      "weight_kg": 4,
+      "length_cm": 80,
+      "width_cm": 60,
+      "height_cm": 40,
+      "volumetric_divisor": 6000,
+      "max_billable_kg": 5,
+      "delivery_days": 18,
+      "max_delivery_days": 30,
+      "compliance_verified": true,
+      "logistics_verified": true,
+      "loss_cap": 15000,
+      "test_units": 5,
+      "review_on": "2026-10-18",
+      "stop_condition": "stop at loss cap or late delivery; review all first five orders"
+    }
+  }
+}
