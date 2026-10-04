@@ -1,0 +1,9 @@
+{
+  "synthetic": true,
+  "notice": "Reproducible test data; not a live export, actual tariff, permission or sales result.",
+  "records": {
+    "candidate": {
+      "fx_rub_per_cny": 14
+    }
+  }
+}

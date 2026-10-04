@@ -1474,7 +1474,8 @@
         "sealeap-ozon-listing-localization",
         "sealeap-ozon-visual-brief",
         "sealeap-ozon-returns-quality",
-        "sealeap-ozon-weekly-diagnostics"
+        "sealeap-ozon-weekly-diagnostics",
+        "sealeap-ozon-data-audit"
       ]
     },
     {
@@ -1527,7 +1528,8 @@
         "sealeap-ozon-promotion-pricing",
         "sealeap-ozon-returns-quality",
         "sealeap-ozon-weekly-diagnostics",
-        "sealeap-ozon-incrementality"
+        "sealeap-ozon-incrementality",
+        "sealeap-ozon-data-audit"
       ]
     },
     {

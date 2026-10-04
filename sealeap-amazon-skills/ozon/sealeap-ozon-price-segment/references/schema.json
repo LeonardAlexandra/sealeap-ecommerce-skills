@@ -1,0 +1,425 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "ozon-evidence/1.0"
+    },
+    "dataset_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "synthetic": {
+      "type": "boolean"
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "seller_region": {
+          "type": "string",
+          "minLength": 1
+        },
+        "market": {
+          "const": "RU"
+        },
+        "account_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "destination": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mode": {
+          "enum": [
+            "crossborder",
+            "local"
+          ]
+        }
+      },
+      "required": [
+        "seller_region",
+        "market",
+        "account_scope",
+        "destination",
+        "mode"
+      ],
+      "additionalProperties": false
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/source"
+      }
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "record_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "field": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_ids": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "resolution": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "record_id",
+          "field",
+          "source_ids",
+          "resolution"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "dataset_id",
+    "synthetic",
+    "context",
+    "sources",
+    "records",
+    "conflicts"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "metric": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": [
+            "number",
+            "string",
+            "boolean",
+            "null"
+          ]
+        },
+        "kind": {
+          "enum": [
+            "FACT",
+            "ESTIMATE",
+            "ASSUMPTION",
+            "UNKNOWN"
+          ]
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        },
+        "currency": {
+          "enum": [
+            "CNY",
+            "RUB",
+            null
+          ]
+        },
+        "source_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "raw_fields": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "confidence": {
+          "enum": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "UNKNOWN"
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "value",
+        "kind",
+        "unit",
+        "currency",
+        "source_ids",
+        "raw_fields",
+        "confidence",
+        "reason"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "UNKNOWN"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "null"
+              },
+              "confidence": {
+                "const": "UNKNOWN"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "value": {
+                "type": [
+                  "number",
+                  "string",
+                  "boolean"
+                ]
+              },
+              "source_ids": {
+                "minItems": 1
+              },
+              "raw_fields": {
+                "minItems": 1
+              },
+              "confidence": {
+                "enum": [
+                  "HIGH",
+                  "MEDIUM",
+                  "LOW"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "source": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provider": {
+          "enum": [
+            "ozon_seller",
+            "ozon_storefront",
+            "own_data",
+            "manual",
+            "mpstats"
+          ]
+        },
+        "transport": {
+          "enum": [
+            "api",
+            "page",
+            "csv",
+            "xlsx",
+            "manual",
+            "json"
+          ]
+        },
+        "module": {
+          "enum": [
+            "own",
+            "external",
+            "scenario"
+          ]
+        },
+        "locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "raw_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "captured_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "period_start": {
+          "type": "string",
+          "format": "date"
+        },
+        "period_end": {
+          "type": "string",
+          "format": "date"
+        },
+        "timezone": {
+          "type": "string",
+          "minLength": 1
+        },
+        "currency": {
+          "enum": [
+            "CNY",
+            "RUB",
+            null
+          ]
+        },
+        "money_unit": {
+          "enum": [
+            "major",
+            "minor",
+            "not_applicable",
+            "UNKNOWN"
+          ]
+        },
+        "scope": {
+          "enum": [
+            "own",
+            "sample",
+            "declared_market",
+            "scenario"
+          ]
+        },
+        "coverage": {
+          "type": "object",
+          "properties": {
+            "selected": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "total": {
+              "type": [
+                "integer",
+                "null"
+              ],
+              "minimum": 0
+            },
+            "pagination_complete": {
+              "type": "boolean"
+            },
+            "filters": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "selected",
+            "total",
+            "pagination_complete",
+            "filters"
+          ],
+          "additionalProperties": false
+        },
+        "field_map": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "id",
+        "provider",
+        "transport",
+        "module",
+        "locator",
+        "raw_sha256",
+        "captured_at",
+        "period_start",
+        "period_end",
+        "timezone",
+        "currency",
+        "money_unit",
+        "scope",
+        "coverage",
+        "field_map"
+      ],
+      "additionalProperties": false
+    },
+    "record": {
+      "type": "object",
+      "properties": {
+        "record_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sku": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "enum": [
+            "candidate",
+            "competitor"
+          ]
+        },
+        "seller_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "category_path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "spec_group": {
+          "type": "string",
+          "minLength": 1
+        },
+        "fulfillment": {
+          "enum": [
+            "rFBS",
+            "FBO",
+            "FBS",
+            "FBP",
+            "UNKNOWN"
+          ]
+        },
+        "fields": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "$ref": "#/$defs/metric"
+          }
+        }
+      },
+      "required": [
+        "record_id",
+        "sku",
+        "role",
+        "seller_id",
+        "category_path",
+        "spec_group",
+        "fulfillment",
+        "fields"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

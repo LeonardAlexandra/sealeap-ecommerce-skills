@@ -1,0 +1,4 @@
+interface:
+  display_name: "OZON 多数据源验收"
+  short_description: "结合多源数据、口径校验与缺口降级，完成OZON 多数据源验收"
+  default_prompt: "使用 $sealeap-ozon-data-audit，读取可用 Ozon/自家/导出数据；MPstats 可选。先验收证据，再给限定范围判断、缺失字段和下一步。"

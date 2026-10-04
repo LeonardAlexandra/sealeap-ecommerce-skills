@@ -13,7 +13,7 @@ ALLOWED_HOSTS = {
     "www.ebay.com", "pages.ebay.com", "export.ebay.com",
     "ads.tiktok.com", "seller-us.tiktok.com", "www.walmartconnect.com",
     "marketplacelearn.walmart.com", "support.google.com", "help.klaviyo.com",
-    "global-selling.mercadolibre.com", "sellers.mercadolibre.com", "mpstats.io", "wiki.mpstats.io", "global-help.ozon.com", "sell.wayfair.com", "www.aboutwayfair.com", "developer.wayfair.io",
+    "global-selling.mercadolibre.com", "sellers.mercadolibre.com", "mpstats.io", "wiki.mpstats.io", "global-help.ozon.com", "docs.ozon.ru", "sell.wayfair.com", "www.aboutwayfair.com", "developer.wayfair.io",
 }
 errors = []
 def require(ok, message):
@@ -43,7 +43,17 @@ for row in entries:
         require((folder / rel).is_file(), "Missing resource: " + row["path"] + "/" + rel)
     text = (folder / "SKILL.md").read_text()
     if row["platform"] == "ozon":
-        require(row.get("mpstats_required") is True, "OZON requires MPstats: " + row["name"])
+        phase1_names = {"sealeap-ozon-" + name for name in (
+            "data-audit", "mpstats-data-audit", "niche-screening", "competitor-map",
+            "price-segment", "unit-economics", "fulfillment-choice")}
+        if row["name"] in phase1_names:
+            require(row.get("mpstats_required") is False, "Phase1 must allow optional MPstats: " + row["name"])
+            require(row.get("data_contract") == "ozon-evidence/1.0", "Missing phase1 contract")
+            require(set(row.get("data_sources", [])) == {"ozon_seller", "ozon_storefront", "own_data", "manual", "mpstats"}, "Missing supported sources")
+            for resource in ("data-contract.md", "schema.json", "adapters.md"):
+                require((folder / "references" / resource).is_file(), "Missing portable multi-source contract: " + row["name"])
+        else:
+            require(row.get("mpstats_required") is True, "Unmigrated OZON requires MPstats: " + row["name"])
         require(bool(row.get("mpstats_reports")), "Missing task MPstats report: " + row["name"])
         require((folder / "references/mpstats.md").is_file(), "Missing portable MPstats contract: " + row["name"])
         require("references/mpstats.md" in text and "HOLD" in text, "Missing MPstats gate: " + row["name"])

@@ -1,0 +1,904 @@
+{
+  "schema_version": "ozon-evidence/1.0",
+  "dataset_id": "05-conflicting-sources",
+  "synthetic": true,
+  "context": {
+    "seller_region": "CN",
+    "market": "RU",
+    "account_scope": "synthetic-own",
+    "destination": "Moscow",
+    "mode": "crossborder"
+  },
+  "sources": [
+    {
+      "id": "cny-costs",
+      "provider": "own_data",
+      "transport": "xlsx",
+      "module": "own",
+      "locator": "raw/05-conflicting-sources-cny-costs.json",
+      "raw_sha256": "bea72a6ba38bc9bdda4b30ea2f2833ad12203a5916151fa6c12672b89101edd9",
+      "captured_at": "2026-10-03T12:00:00+08:00",
+      "period_start": "2026-10-01",
+      "period_end": "2026-10-03",
+      "timezone": "Asia/Shanghai",
+      "currency": "CNY",
+      "money_unit": "major",
+      "scope": "own",
+      "coverage": {
+        "selected": 1,
+        "total": 1,
+        "pagination_complete": true,
+        "filters": "fixed synthetic sample; destination Moscow; no market population claim"
+      },
+      "field_map": {
+        "procurement": "records.<record_id>.procurement",
+        "domestic_shipping": "records.<record_id>.domestic_shipping",
+        "packaging": "records.<record_id>.packaging"
+      }
+    },
+    {
+      "id": "seller-fees",
+      "provider": "ozon_seller",
+      "transport": "csv",
+      "module": "own",
+      "locator": "raw/05-conflicting-sources-seller-fees.json",
+      "raw_sha256": "a5af3e606878e899072070a47c8455f571b60297703aa0565ec61b0b7de5ab9c",
+      "captured_at": "2026-10-03T12:00:00+08:00",
+      "period_start": "2026-10-01",
+      "period_end": "2026-10-03",
+      "timezone": "Asia/Shanghai",
+      "currency": "RUB",
+      "money_unit": "major",
+      "scope": "own",
+      "coverage": {
+        "selected": 1,
+        "total": 1,
+        "pagination_complete": true,
+        "filters": "fixed synthetic sample; destination Moscow; no market population claim"
+      },
+      "field_map": {
+        "revenue_basis": "records.<record_id>.revenue_basis",
+        "commission_rate": "records.<record_id>.commission_rate",
+        "payment_rate": "records.<record_id>.payment_rate",
+        "tax_rate": "records.<record_id>.tax_rate",
+        "account_eligible": "records.<record_id>.account_eligible"
+      }
+    },
+    {
+      "id": "own-route",
+      "provider": "own_data",
+      "transport": "manual",
+      "module": "own",
+      "locator": "raw/05-conflicting-sources-own-route.json",
+      "raw_sha256": "45a292fe497e77b7bc8a1d10cb88176213b68f851649ba27ef639ac4710ee5fc",
+      "captured_at": "2026-10-03T12:00:00+08:00",
+      "period_start": "2026-10-01",
+      "period_end": "2026-10-03",
+      "timezone": "Asia/Shanghai",
+      "currency": "RUB",
+      "money_unit": "major",
+      "scope": "own",
+      "coverage": {
+        "selected": 1,
+        "total": 1,
+        "pagination_complete": true,
+        "filters": "fixed synthetic sample; destination Moscow; no market population claim"
+      },
+      "field_map": {
+        "seller_price": "records.<record_id>.seller_price",
+        "fx_rub_per_cny": "records.<record_id>.fx_rub_per_cny",
+        "outbound_shipping": "records.<record_id>.outbound_shipping",
+        "return_loss": "records.<record_id>.return_loss",
+        "other_fixed": "records.<record_id>.other_fixed",
+        "ad_rate": "records.<record_id>.ad_rate",
+        "weight_kg": "records.<record_id>.weight_kg",
+        "length_cm": "records.<record_id>.length_cm",
+        "width_cm": "records.<record_id>.width_cm",
+        "height_cm": "records.<record_id>.height_cm",
+        "volumetric_divisor": "records.<record_id>.volumetric_divisor",
+        "max_billable_kg": "records.<record_id>.max_billable_kg",
+        "delivery_days": "records.<record_id>.delivery_days",
+        "max_delivery_days": "records.<record_id>.max_delivery_days",
+        "compliance_verified": "records.<record_id>.compliance_verified",
+        "logistics_verified": "records.<record_id>.logistics_verified",
+        "loss_cap": "records.<record_id>.loss_cap",
+        "test_units": "records.<record_id>.test_units",
+        "review_on": "records.<record_id>.review_on",
+        "stop_condition": "records.<record_id>.stop_condition"
+      }
+    },
+    {
+      "id": "storefront",
+      "provider": "ozon_storefront",
+      "transport": "page",
+      "module": "external",
+      "locator": "raw/05-conflicting-sources-storefront.json",
+      "raw_sha256": "6110021609a26094d4e6b3ad87b08952dbcfce4496218420c22ab814d05247bc",
+      "captured_at": "2026-10-03T12:00:00+08:00",
+      "period_start": "2026-10-01",
+      "period_end": "2026-10-03",
+      "timezone": "Asia/Shanghai",
+      "currency": "RUB",
+      "money_unit": "major",
+      "scope": "sample",
+      "coverage": {
+        "selected": 3,
+        "total": 3,
+        "pagination_complete": true,
+        "filters": "fixed synthetic sample; destination Moscow; no market population claim"
+      },
+      "field_map": {
+        "price_discount": "records.<record_id>.price_discount",
+        "price_card": "records.<record_id>.price_card",
+        "pack_quantity": "records.<record_id>.pack_quantity",
+        "review_count": "records.<record_id>.review_count",
+        "rating": "records.<record_id>.rating",
+        "delivery_days": "records.<record_id>.delivery_days"
+      }
+    },
+    {
+      "id": "alternative",
+      "provider": "manual",
+      "transport": "csv",
+      "module": "own",
+      "locator": "raw/05-conflicting-sources-alternative.json",
+      "raw_sha256": "6dda8ba3b3d70aba12ab7173a5d7f0b795950d7fcc136ec86e38747ed4f7d8d5",
+      "captured_at": "2026-10-03T12:00:00+08:00",
+      "period_start": "2026-10-01",
+      "period_end": "2026-10-03",
+      "timezone": "Asia/Shanghai",
+      "currency": "RUB",
+      "money_unit": "major",
+      "scope": "own",
+      "coverage": {
+        "selected": 1,
+        "total": 1,
+        "pagination_complete": true,
+        "filters": "fixed synthetic sample; destination Moscow; no market population claim"
+      },
+      "field_map": {
+        "fx_rub_per_cny": "records.<record_id>.fx_rub_per_cny"
+      }
+    },
+    {
+      "id": "mpstats",
+      "provider": "mpstats",
+      "transport": "api",
+      "module": "external",
+      "locator": "raw/05-conflicting-sources-mpstats.json",
+      "raw_sha256": "2d8151d965859977463aca68b39ecc6909809c292bb7fb438be0031babe2f3e6",
+      "captured_at": "2026-10-03T12:00:00+08:00",
+      "period_start": "2026-10-01",
+      "period_end": "2026-10-03",
+      "timezone": "Asia/Shanghai",
+      "currency": "RUB",
+      "money_unit": "major",
+      "scope": "sample",
+      "coverage": {
+        "selected": 1,
+        "total": 1,
+        "pagination_complete": true,
+        "filters": "fixed synthetic sample; destination Moscow; no market population claim"
+      },
+      "field_map": {
+        "sales_estimate": "records.<record_id>.sales_estimate"
+      }
+    }
+  ],
+  "records": [
+    {
+      "record_id": "candidate",
+      "sku": "TEST-05",
+      "role": "candidate",
+      "seller_id": "synthetic-own",
+      "category_path": "fixture/organizer",
+      "spec_group": "organizer-small",
+      "fulfillment": "rFBS",
+      "fields": {
+        "seller_price": {
+          "value": 1500,
+          "kind": "ASSUMPTION",
+          "unit": "money",
+          "currency": "RUB",
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.seller_price"
+          ],
+          "confidence": "LOW",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "revenue_basis": {
+          "value": "gross_seller",
+          "kind": "FACT",
+          "unit": "text",
+          "currency": null,
+          "source_ids": [
+            "seller-fees"
+          ],
+          "raw_fields": [
+            "records.candidate.revenue_basis"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "procurement": {
+          "value": 20,
+          "kind": "FACT",
+          "unit": "money",
+          "currency": "CNY",
+          "source_ids": [
+            "cny-costs"
+          ],
+          "raw_fields": [
+            "records.candidate.procurement"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "domestic_shipping": {
+          "value": 3,
+          "kind": "FACT",
+          "unit": "money",
+          "currency": "CNY",
+          "source_ids": [
+            "cny-costs"
+          ],
+          "raw_fields": [
+            "records.candidate.domestic_shipping"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "packaging": {
+          "value": 2,
+          "kind": "FACT",
+          "unit": "money",
+          "currency": "CNY",
+          "source_ids": [
+            "cny-costs"
+          ],
+          "raw_fields": [
+            "records.candidate.packaging"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "fx_rub_per_cny": {
+          "value": 12,
+          "kind": "FACT",
+          "unit": "RUB/CNY",
+          "currency": null,
+          "source_ids": [
+            "own-route",
+            "alternative"
+          ],
+          "raw_fields": [
+            "records.candidate.fx_rub_per_cny"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "outbound_shipping": {
+          "value": 250,
+          "kind": "FACT",
+          "unit": "money",
+          "currency": "RUB",
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.outbound_shipping"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "return_loss": {
+          "value": 40,
+          "kind": "ASSUMPTION",
+          "unit": "money",
+          "currency": "RUB",
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.return_loss"
+          ],
+          "confidence": "LOW",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "other_fixed": {
+          "value": 20,
+          "kind": "FACT",
+          "unit": "money",
+          "currency": "RUB",
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.other_fixed"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "commission_rate": {
+          "value": 0.15,
+          "kind": "FACT",
+          "unit": "ratio",
+          "currency": null,
+          "source_ids": [
+            "seller-fees"
+          ],
+          "raw_fields": [
+            "records.candidate.commission_rate"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "payment_rate": {
+          "value": 0.02,
+          "kind": "FACT",
+          "unit": "ratio",
+          "currency": null,
+          "source_ids": [
+            "seller-fees"
+          ],
+          "raw_fields": [
+            "records.candidate.payment_rate"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "tax_rate": {
+          "value": 0.03,
+          "kind": "FACT",
+          "unit": "ratio",
+          "currency": null,
+          "source_ids": [
+            "seller-fees"
+          ],
+          "raw_fields": [
+            "records.candidate.tax_rate"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "ad_rate": {
+          "value": 0.1,
+          "kind": "ASSUMPTION",
+          "unit": "ratio",
+          "currency": null,
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.ad_rate"
+          ],
+          "confidence": "LOW",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "weight_kg": {
+          "value": 0.3,
+          "kind": "FACT",
+          "unit": "kg",
+          "currency": null,
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.weight_kg"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "length_cm": {
+          "value": 20,
+          "kind": "FACT",
+          "unit": "cm",
+          "currency": null,
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.length_cm"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "width_cm": {
+          "value": 15,
+          "kind": "FACT",
+          "unit": "cm",
+          "currency": null,
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.width_cm"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "height_cm": {
+          "value": 8,
+          "kind": "FACT",
+          "unit": "cm",
+          "currency": null,
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.height_cm"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "volumetric_divisor": {
+          "value": 6000,
+          "kind": "FACT",
+          "unit": "cm3/kg",
+          "currency": null,
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.volumetric_divisor"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "max_billable_kg": {
+          "value": 2,
+          "kind": "FACT",
+          "unit": "kg",
+          "currency": null,
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.max_billable_kg"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "delivery_days": {
+          "value": 18,
+          "kind": "FACT",
+          "unit": "days",
+          "currency": null,
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.delivery_days"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "max_delivery_days": {
+          "value": 30,
+          "kind": "FACT",
+          "unit": "days",
+          "currency": null,
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.max_delivery_days"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "account_eligible": {
+          "value": true,
+          "kind": "FACT",
+          "unit": "boolean",
+          "currency": null,
+          "source_ids": [
+            "seller-fees"
+          ],
+          "raw_fields": [
+            "records.candidate.account_eligible"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "compliance_verified": {
+          "value": true,
+          "kind": "FACT",
+          "unit": "boolean",
+          "currency": null,
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.compliance_verified"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "logistics_verified": {
+          "value": true,
+          "kind": "FACT",
+          "unit": "boolean",
+          "currency": null,
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.logistics_verified"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "loss_cap": {
+          "value": 6000,
+          "kind": "ASSUMPTION",
+          "unit": "money",
+          "currency": "RUB",
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.loss_cap"
+          ],
+          "confidence": "LOW",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "test_units": {
+          "value": 5,
+          "kind": "ASSUMPTION",
+          "unit": "count",
+          "currency": null,
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.test_units"
+          ],
+          "confidence": "LOW",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "review_on": {
+          "value": "2026-10-18",
+          "kind": "ASSUMPTION",
+          "unit": "text",
+          "currency": null,
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.review_on"
+          ],
+          "confidence": "LOW",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "stop_condition": {
+          "value": "stop at loss cap or late delivery; review all first five orders",
+          "kind": "ASSUMPTION",
+          "unit": "text",
+          "currency": null,
+          "source_ids": [
+            "own-route"
+          ],
+          "raw_fields": [
+            "records.candidate.stop_condition"
+          ],
+          "confidence": "LOW",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "sales_estimate": {
+          "value": 120,
+          "kind": "ESTIMATE",
+          "unit": "count",
+          "currency": null,
+          "source_ids": [
+            "mpstats"
+          ],
+          "raw_fields": [
+            "records.candidate.sales_estimate"
+          ],
+          "confidence": "MEDIUM",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        }
+      }
+    },
+    {
+      "record_id": "competitor-1",
+      "sku": "TEST-C1",
+      "role": "competitor",
+      "seller_id": "seller-a",
+      "category_path": "fixture/organizer",
+      "spec_group": "organizer-small",
+      "fulfillment": "FBO",
+      "fields": {
+        "price_discount": {
+          "value": 1000,
+          "kind": "FACT",
+          "unit": "money",
+          "currency": "RUB",
+          "source_ids": [
+            "storefront"
+          ],
+          "raw_fields": [
+            "records.competitor-1.price_discount"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "price_card": {
+          "value": 900,
+          "kind": "FACT",
+          "unit": "money",
+          "currency": "RUB",
+          "source_ids": [
+            "storefront"
+          ],
+          "raw_fields": [
+            "records.competitor-1.price_card"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "pack_quantity": {
+          "value": 2,
+          "kind": "FACT",
+          "unit": "count",
+          "currency": null,
+          "source_ids": [
+            "storefront"
+          ],
+          "raw_fields": [
+            "records.competitor-1.pack_quantity"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "review_count": {
+          "value": 100,
+          "kind": "FACT",
+          "unit": "count",
+          "currency": null,
+          "source_ids": [
+            "storefront"
+          ],
+          "raw_fields": [
+            "records.competitor-1.review_count"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "rating": {
+          "value": 4.6,
+          "kind": "FACT",
+          "unit": "score",
+          "currency": null,
+          "source_ids": [
+            "storefront"
+          ],
+          "raw_fields": [
+            "records.competitor-1.rating"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "delivery_days": {
+          "value": 2,
+          "kind": "FACT",
+          "unit": "days",
+          "currency": null,
+          "source_ids": [
+            "storefront"
+          ],
+          "raw_fields": [
+            "records.competitor-1.delivery_days"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        }
+      }
+    },
+    {
+      "record_id": "competitor-2",
+      "sku": "TEST-C2",
+      "role": "competitor",
+      "seller_id": "seller-a",
+      "category_path": "fixture/organizer",
+      "spec_group": "organizer-small",
+      "fulfillment": "FBO",
+      "fields": {
+        "price_discount": {
+          "value": 600,
+          "kind": "FACT",
+          "unit": "money",
+          "currency": "RUB",
+          "source_ids": [
+            "storefront"
+          ],
+          "raw_fields": [
+            "records.competitor-2.price_discount"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "price_card": {
+          "value": 500,
+          "kind": "FACT",
+          "unit": "money",
+          "currency": "RUB",
+          "source_ids": [
+            "storefront"
+          ],
+          "raw_fields": [
+            "records.competitor-2.price_card"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "pack_quantity": {
+          "value": 1,
+          "kind": "FACT",
+          "unit": "count",
+          "currency": null,
+          "source_ids": [
+            "storefront"
+          ],
+          "raw_fields": [
+            "records.competitor-2.pack_quantity"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "review_count": {
+          "value": 200,
+          "kind": "FACT",
+          "unit": "count",
+          "currency": null,
+          "source_ids": [
+            "storefront"
+          ],
+          "raw_fields": [
+            "records.competitor-2.review_count"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "rating": {
+          "value": 4.6,
+          "kind": "FACT",
+          "unit": "score",
+          "currency": null,
+          "source_ids": [
+            "storefront"
+          ],
+          "raw_fields": [
+            "records.competitor-2.rating"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "delivery_days": {
+          "value": 2,
+          "kind": "FACT",
+          "unit": "days",
+          "currency": null,
+          "source_ids": [
+            "storefront"
+          ],
+          "raw_fields": [
+            "records.competitor-2.delivery_days"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        }
+      }
+    },
+    {
+      "record_id": "competitor-3",
+      "sku": "TEST-C3",
+      "role": "competitor",
+      "seller_id": "seller-b",
+      "category_path": "fixture/organizer",
+      "spec_group": "organizer-small",
+      "fulfillment": "FBO",
+      "fields": {
+        "price_discount": {
+          "value": 1400,
+          "kind": "FACT",
+          "unit": "money",
+          "currency": "RUB",
+          "source_ids": [
+            "storefront"
+          ],
+          "raw_fields": [
+            "records.competitor-3.price_discount"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "price_card": {
+          "value": 1300,
+          "kind": "FACT",
+          "unit": "money",
+          "currency": "RUB",
+          "source_ids": [
+            "storefront"
+          ],
+          "raw_fields": [
+            "records.competitor-3.price_card"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "pack_quantity": {
+          "value": 2,
+          "kind": "FACT",
+          "unit": "count",
+          "currency": null,
+          "source_ids": [
+            "storefront"
+          ],
+          "raw_fields": [
+            "records.competitor-3.pack_quantity"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "review_count": {
+          "value": 300,
+          "kind": "FACT",
+          "unit": "count",
+          "currency": null,
+          "source_ids": [
+            "storefront"
+          ],
+          "raw_fields": [
+            "records.competitor-3.review_count"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "rating": {
+          "value": 4.6,
+          "kind": "FACT",
+          "unit": "score",
+          "currency": null,
+          "source_ids": [
+            "storefront"
+          ],
+          "raw_fields": [
+            "records.competitor-3.rating"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        },
+        "delivery_days": {
+          "value": 2,
+          "kind": "FACT",
+          "unit": "days",
+          "currency": null,
+          "source_ids": [
+            "storefront"
+          ],
+          "raw_fields": [
+            "records.competitor-3.delivery_days"
+          ],
+          "confidence": "HIGH",
+          "reason": "synthetic fixture input; not an actual marketplace fee or commercial result"
+        }
+      }
+    }
+  ],
+  "conflicts": [
+    {
+      "record_id": "candidate",
+      "field": "fx_rub_per_cny",
+      "source_ids": [
+        "own-route",
+        "alternative"
+      ],
+      "resolution": null
+    }
+  ]
+}

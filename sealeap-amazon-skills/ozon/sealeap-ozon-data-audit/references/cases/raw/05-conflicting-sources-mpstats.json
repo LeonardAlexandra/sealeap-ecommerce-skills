@@ -1,0 +1,9 @@
+{
+  "synthetic": true,
+  "notice": "Reproducible test data; not a live export, actual tariff, permission or sales result.",
+  "records": {
+    "candidate": {
+      "sales_estimate": 120
+    }
+  }
+}

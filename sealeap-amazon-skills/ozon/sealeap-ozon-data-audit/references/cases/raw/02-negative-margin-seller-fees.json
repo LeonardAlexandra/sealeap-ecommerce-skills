@@ -1,0 +1,13 @@
+{
+  "synthetic": true,
+  "notice": "Reproducible test data; not a live export, actual tariff, permission or sales result.",
+  "records": {
+    "candidate": {
+      "revenue_basis": "gross_seller",
+      "commission_rate": 0.15,
+      "payment_rate": 0.02,
+      "tax_rate": 0.03,
+      "account_eligible": true
+    }
+  }
+}
